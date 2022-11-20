@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/23b2e0ff10.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+    <title>Document</title>
+</head>
+<body>
+	<header class="header">
+    <a class="logo" href="#"><img id="navLogo" src="./logo.png" alt=""></a>
+      <ul class="navBar">
+          <li><a href="#"><i class="fa-solid fa-house" id="index-home-btn"><span class="toolTipText">Home</span></i></a></li>
+          <li><a href="./playlists.html"><i class="fa-solid fa-music" id="index-playlist-btn"><span class="toolTipText">Playlists</span></i></a></li>
+    </ul>
+      
+	</header> 
+
+    <div class="searchContainer">
+        <div class="wrap" id="inputContainer">
+          <div class="search" id="gameInput">
+              <input id="gameInputField" type="search" class="searchBar" placeholder="Search by Tempo/BPM">
+              <button type="submit" class="searchButton" onclick="">
+                <i class="fa fa-search"></i>
+              </button>
+          </div>
+        </div>
+    </div> 
+
+    <div class="dataContainer">
+        <div class="searchResultContainer">
+            
+            <div class="musicContainer">
+                <div class="musicPlayer">
+                    <img class="musicImg" src="https://via.placeholder.com/50" alt="">
+                    <div class="infoContainer">
+                        <h2>Title</h2>
+                        <h3>Artist</h3>
+                    </div>
+                    <div class="infoContainer2">
+                        <h4>BPM</h4>
+                        <p>165</p>
+                    </div>
+                    <button class="playButton">
+                        <i id="musicIcon" class="fa-solid fa-play fa-3x"></i>
+                    </button>
+                    <audio id="musicSong" src="https://www.computerhope.com/jargon/m/example.mp3"></audio>
+                    <!-- <audio controls class="audioBar">
+                        <source src=".mp3" type="audio/mpeg">
+                    </audio> -->
+                    <button class="addButton">
+                        <i class="fa-solid fa-plus fa-4x"></i>
+                    </button>
+                    <script>
+                        var musicSong = document.getElementById("musicSong");
+                        var icon = document.getElementById("musicIcon");
+
+                        icon.onclick = function(){
+                            if(musicSong.paused){
+                                musicSong.play();
+                                icon.className = "fa-solid fa-pause fa-3x"
+                            }else{
+                                musicSong.pause();
+                                icon.className = "fa-solid fa-play fa-3x"
+                            }
+                        }
+                    </script>
+                </div>
+            </div>
+
+            <div class="musicContainer">
+                <div class="musicPlayer">
+                    <img class="musicImg" src="https://via.placeholder.com/50" alt="">
+                    <div class="infoContainer">
+                        <h2>Title</h2>
+                        <h3>Artist</h3>
+                    </div>
+                    <button class="playButton">
+                        <i id="musicIcon" class="fa-solid fa-play fa-3x"></i>
+                    </button>
+                    <audio id="musicSong" src="https://www.computerhope.com/jargon/m/example.mp3"></audio>
+                    <!-- <audio controls class="audioBar">
+                        <source src=".mp3" type="audio/mpeg">
+                    </audio> -->
+                    <button class="addButton">
+                        <i class="fa-solid fa-plus fa-4x"></i>
+                    </button>
+                    <script>
+                        var musicSong = document.getElementById("musicSong");
+                        var icon = document.getElementById("musicIcon");
+
+                        icon.onclick = function(){
+                            if(musicSong.paused){
+                                musicSong.play();
+                                icon.className = "fa-solid fa-pause fa-3x"
+                            }else{
+                                musicSong.pause();
+                                icon.className = "fa-solid fa-play fa-3x"
+                            }
+                        }
+                    </script>
+                </div>
+            </div>
+
+            <div class="musicContainer">
+                <div class="musicPlayer">
+                    <img class="musicImg" src="https://via.placeholder.com/50" alt="">
+                    <div class="infoContainer">
+                        <h2>Title</h2>
+                        <h3>Artist</h3>
+                    </div>
+                    <button class="playButton">
+                        <i id="musicIcon" class="fa-solid fa-play fa-3x"></i>
+                    </button>
+                    <audio id="musicSong" src="https://www.computerhope.com/jargon/m/example.mp3"></audio>
+                    <!-- <audio controls class="audioBar">
+                        <source src=".mp3" type="audio/mpeg">
+                    </audio> -->
+                    <button class="addButton">
+                        <i class="fa-solid fa-plus fa-4x"></i>
+                    </button>
+                    <script>
+                        var musicSong = document.getElementById("musicSong");
+                        var icon = document.getElementById("musicIcon");
+
+                        icon.onclick = function(){
+                            if(musicSong.paused){
+                                musicSong.play();
+                                icon.className = "fa-solid fa-pause fa-3x"
+                            }else{
+                                musicSong.pause();
+                                icon.className = "fa-solid fa-play fa-3x"
+                            }
+                        }
+                    </script>
+                </div>
+            </div>
+
+            <div class="musicContainer">
+                <div class="musicPlayer">
+                    <img class="musicImg" src="https://via.placeholder.com/50" alt="">
+                    <div class="infoContainer">
+                        <h2>Title</h2>
+                        <h3>Artist</h3>
+                    </div>
+                    <button class="playButton">
+                        <i id="musicIcon" class="fa-solid fa-play fa-3x"></i>
+                    </button>
+                    <audio id="musicSong" src="https://www.computerhope.com/jargon/m/example.mp3"></audio>
+                    <!-- <audio controls class="audioBar">
+                        <source src=".mp3" type="audio/mpeg">
+                    </audio> -->
+                    <button class="addButton">
+                        <i class="fa-solid fa-plus fa-4x"></i>
+                    </button>
+                    <script>
+                        var musicSong = document.getElementById("musicSong");
+                        var icon = document.getElementById("musicIcon");
+
+                        icon.onclick = function(){
+                            if(musicSong.paused){
+                                musicSong.play();
+                                icon.className = "fa-solid fa-pause fa-3x"
+                            }else{
+                                musicSong.pause();
+                                icon.className = "fa-solid fa-play fa-3x"
+                            }
+                        }
+                    </script>
+                </div>
+            </div>
+
+            <div class="musicContainer">
+                <div class="musicPlayer">
+                    <img class="musicImg" src="https://via.placeholder.com/50" alt="">
+                    <div class="infoContainer">
+                        <h2>Title</h2>
+                        <h3>Artist</h3>
+                    </div>
+                    <button class="playButton">
+                        <i id="musicIcon" class="fa-solid fa-play fa-3x"></i>
+                    </button>
+                    <audio id="musicSong" src="https://www.computerhope.com/jargon/m/example.mp3"></audio>
+                    <!-- <audio controls class="audioBar">
+                        <source src=".mp3" type="audio/mpeg">
+                    </audio> -->
+                    <button class="addButton">
+                        <i class="fa-solid fa-plus fa-4x"></i>
+                    </button>
+                    <script>
+                        var musicSong = document.getElementById("musicSong");
+                        var icon = document.getElementById("musicIcon");
+
+                        icon.onclick = function(){
+                            if(musicSong.paused){
+                                musicSong.play();
+                                icon.className = "fa-solid fa-pause fa-3x"
+                            }else {
+                                musicSong.pause();
+                                icon.className = "fa-solid fa-play fa-3x"
+                            }
+                        }
+                    </script>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="moodContainer" id="moodDataContainer">
+            <p class="mood-pre-title">Search By</p>
+            <h1 class="mood-title">Moods</h1>
+            <div class="mood-inside">
+                <div class="mood-item">
+                    <img src="https://via.placeholder.com/300" alt="">
+                </div>
+                <div class="mood-item">
+                    <img src="https://via.placeholder.com/300" alt="">
+                </div>
+                <div class="mood-item">
+                    <img src="https://via.placeholder.com/300" alt="">
+                </div>
+                <div class="mood-item">
+                    <img src="https://via.placeholder.com/300" alt="">
+                </div>
+                <div class="mood-item">
+                    <img src="https://via.placeholder.com/300" alt="">
+                </div>
+                <div class="mood-item">
+                    <img src="https://via.placeholder.com/300" alt="">
+                </div>
+                <div class="mood-item">
+                    <img src="https://via.placeholder.com/300" alt="">
+                </div>
+                <div class="mood-item">
+                    <img src="https://via.placeholder.com/300" alt="">
+                </div>
+            </div>
+
+            
+
+        </div>
+
+        <div class="">
+
+        </div>
+    </div>
+
+    <footer>
+        
+    </footer>
+
+</body>
+</html>
