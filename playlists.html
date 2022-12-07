@@ -5,36 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="./logo3.png">
     <script src="https://kit.fontawesome.com/23b2e0ff10.js" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
-    <title>Document</title>
+    <script src="playlist.js" defer></script>
+    <title>TempoSearch</title>
 </head>
 <body>
 	<header class="header">
     <a class="logo" href="./index.html"><img id="navLogo" src="./logo.png" alt=""></a>
-      <ul class="navBar">
-          <li><a href="./index.html"><i class="fa-solid fa-house" id="playlists-home-btn"><span class="toolTipText">Home</span></i></a></li>
-          <li><a href="#"><i class="fa-solid fa-music" id="playlists-playlist-btn"><span class="toolTipText">Playlists</span></i></a></li>
+    <ul class="navBar">
+          <li><a href="./index.html" class="playlists-home-btn"><i class="fa-solid fa-house" id="playlists-home-btn"></i><span class="toolTipText">Home</span></a></li>
+          <li><a href="#" class="playlists-playlist-btn"><i class="fa-solid fa-music" id="playlists-playlist-btn"></i><span class="toolTipText">Playlists</span></a></li>
+          <li><a href="./login.html" class="playlist-login-btn"><i class="fa-solid fa-user" id="playlist-login-btn"></i><span class="toolTipText" id="loginTooltip">Login</span></a></li>  
     </ul>
       
 	</header> 
 
-    <!-- <div class="searchContainer">
-        <div class="wrap" id="inputContainer">
-          <div class="search" id="gameInput">
-              <input id="gameInputField" type="search" class="searchBar" placeholder="Search by Tempo/BPM">
-              <button type="submit" class="searchButton" onclick="">
-                <i class="fa fa-search"></i>
-              </button>
-          </div>
-        </div>
-    </div>  -->
-
-        <div class="playlistContainer" id="playlistDataContainer">
-            <p class="create-playlist">Create Playlist <i class="fa-solid fa-plus"></i></p>
+        <div class="playlistDataContainer" id="playlistDataContainer" style="display: block;">
+            <p class="create-playlist" onclick="openForm()">Create Playlist <i class="fa-solid fa-plus"></i></p>
             <h1 class="playlist-title">My Playlists</h1>
-            <div class="playlist-inside">
-                <div class="playlist-item">
+            <div class="playlist-inside" id="playlist-inside">
+                <!-- <div class="playlist-item">
                     <div class="playlist-item-inside">                       
                         <h1>Title</h1>
                         <p>Playlist Description</p>
@@ -75,12 +66,40 @@
                         <p>Playlist Description</p>
                     </div>
                     <img src="https://via.placeholder.com/300" alt="">
-                </div>
+                </div> -->
 
             </div>
 
-            
+         
+            <div class="playlistFormContainer" id="playlistFormContainer">
+                <form class="playlistForm" id="playlistForm">
+                    <label for="plname"><b>Playlist Name</b></label>
+                    <input type="text" id="plname" name="plname" placeholder="Playlist Name"><br>
+                    <label for="pldesc"><b>Playlist Description</b></label>
+                    <textarea name="pldesc" id="pldesc" cols="30" rows="10" placeholder="Playlist Description"></textarea><br>
+                    <!-- <input type="text" id="pldesc" name="pldesc" placeholder="Playlist Description"><br> -->
+                    <button class="pl-form-create" id="createPlaylist" type="button" onclick="addPlaylist()">Create Playlist</button>
+                    <button class="pl-form-close" type="button" onclick="closeForm()">Close</button>
+                </form>
+            </div>
+        
+        </div>
 
+        <div class="playlistResultContainer" id="playlistResultContainer">
+            <!-- <h1 class="playlistTitle" id="playlistTitle"></h1> -->
+
+            <div class="playlist-info-container" id="playlist-info-container" style="display: none;">
+                <div class="playlist-info-container-home" id="playlist-info-container-home">
+                    <i class="fa-solid fa-chevron-left" id="single-mood-i" onclick="getPlaylists()"></i>
+                    <p class="single-mood-p" onclick="getPlaylists()">Back to Playlists</p>
+                </div>
+                <div class="playlist-info-container-text" id="playlist-info-container-text">
+                    <h1 class="playlistTitle" id="playlistTitle"></h1>
+                </div>
+            </div>
+            <div class="playlistContainer" id="playlistContainer">
+
+            </div>
         </div>
 
         <div class="">

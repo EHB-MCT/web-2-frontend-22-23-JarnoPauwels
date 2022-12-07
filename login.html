@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/23b2e0ff10.js" crossorigin="anonymous"></script>
+    <script type="module" src="login.js" defer ></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="./logo3.png">
+    <!-- <script src="index.js"></script> -->
+    <title>TempoSearch</title>
+</head>
+<body>
+	<header class="header">
+    <a class="logo" href="./index.html"><img id="navLogo" src="./logo.png" alt=""></a>
+    <ul class="navBar">
+          <li><a href="./index.html" class="login-home-btn"><i class="fa-solid fa-house" id="login-home-btn"></i><span class="toolTipText">Home</span></a></li>
+          <li><a href="./playlists.html" class="login-playlist-btn"><i class="fa-solid fa-music" id="login-playlist-btn"></i><span class="toolTipText">Playlists</span></a></li>
+          <li><a href="#" class="login-login-btn"><i class="fa-solid fa-user" id="login-login-btn"></i><span class="toolTipText" id="loginTooltip">Login</span></a></li>  
+    </ul>
+      
+	</header> 
+    <div class="loginMessage">
+        <h1 id="welcomeMessage"></h1>
+    </div>
+
+    <div class="loginContainer" id="loginContainer">
+        <form id="lForm" class="login-inside">
+            <label for="inputEmail"><b>Email address</b></label>
+            <input type="email" placeholder="Enter Email" id="inputEmail" required>
+    
+            <label for="inputPassword"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" id="inputPassword" required>
+    
+           
+            
+            <div class="userBtns">
+                <button type="submit">Login</button>
+                <button type="button" id="registerBtn">Register</button>
+            </div>
+            <p>Or</p>
+            <button type="button" id="logoutBtn">Log Out</button>
+        </form>
+    </div>
+
+    <div class="registerContainer" id="registerContainer" style="display: none;">
+        <form class="login-inside" id="rForm">
+                <label for="inputUsername"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" id="inputUsername">
+
+                <label for="inputEmail"><b>Email address</b></label>
+                <input type="email" placeholder="Enter Email" id="inputRegEmail" required>
+ 
+                <label for="inputPassword"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" id="inputRegPassword">
+
+                <label for="inputPassword2"><b>Repeat password</b></label>
+                <input type="password" placeholder="Repeat Password" id="inputRegPassword2">
+
+            <button type="submit">Register</button>
+            <p>Or</p>
+            <button type="button" id="loginBtn">Login</button>
+        </form>
+    </div>
+
+
+    <footer>
+        
+    </footer>
+</body>
+</html>
