@@ -2,6 +2,15 @@ window.onload = randomSongs()
 // Get and Displasy Random Songs on Load
 async function randomSongs(){
 
+    // Puts the display of mood title and bpm back to none (these are displayed standard, on load they get put to none until you click on a mood, to return to homepage this function gets called and they get put back to none)
+    document.getElementById('single-mood-container').style.display = "none";
+    document.getElementById('single-mood-container-home').style.display = "none";
+    document.getElementById('single-mood-container-text').style.display = "none";
+    document.getElementById('searchContainer').style.display = "block";
+    document.getElementById('moodDataContainer').style.display = "block";
+    document.getElementById('searchResultContainer').style.paddingTop = "3em";
+        
+
     // Get random BPM number for fetch
     function randomInteger(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -52,87 +61,6 @@ async function randomSongs(){
                     </div>
                 </div>`;
             
-            // Puts the display of mood title and bpm back to none (these are displayed standard, on load they get put to none until you click on a mood, to return to homepage this function gets called and they get put back to none)
-            document.getElementById('single-mood-container').style.display = "none";
-            document.getElementById('single-mood-container-home').style.display = "none";
-            document.getElementById('single-mood-container-text').style.display = "none";
-            document.getElementById('dataContainer').innerHTML = 
-            `<div class="searchContainer">
-                <div class="wrap" id="inputContainer">
-                <div class="search" id="songInput">
-                    <input id="songInputField" type="search" class="searchBar" placeholder="Search by Tempo/BPM">
-                    <select class="limit" name="limit" id="limit">
-                        <option value="3">3</option>
-                        <option value="6">6</option>
-                        <option value="9">9</option>
-                        <option value="12">12</option>
-                    </select>
-                    <button type="submit" class="searchButton" onclick="getSongs(), clearInput()">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </div>
-                </div>
-            </div>
-            
-            <div class="searchResultContainer" id="searchResultContainer">
-                <div id="songAddedMsg" class="songAddedMsg">
-                    <h3>Added song to playlist!</h3>
-                </div>
-                <div id="songsArrayHtml"></div>
-            </div>
-    
-            <div class="moodContainer" id="moodDataContainer">
-                <p class="mood-pre-title">Search By</p>
-                <h1 class="mood-title">Moods</h1>
-                <div class="mood-inside">
-                    <div class="mood-item">
-                        <h1 onclick="firstMood(40, 'ULTRA SLOW')">Ultra Slow</h1>
-                        <img class="background-img" src="./moods/124353-huqumrjvmo-1563950293.jpg" alt="" onclick="firstMood(40, 'ULTRA SLOW')">
-                    </div>
-                    <div class="mood-item">
-                        <h1 onclick="firstMood(60, 'REALLY SLOW')">Really Slow</h1>
-                        <img class="background-img" src="./moods/_WW1129401.jpg" alt="" onclick="firstMood(60, 'REALLY SLOW')">
-                    </div>
-                    <div class="mood-item">
-                        <h1 onclick="firstMood(80, 'SLOW')">Slow</h1>
-                        <img class="background-img" src="./moods/turtle-16532029043x2.jpg" alt="" onclick="firstMood(80, 'SLOW')">
-                    </div>
-                    <div class="mood-item">
-                        <h1 onclick="firstMood(100, 'INTERMEDIATE SLOW')">Inter- mediate Slow</h1>
-                        <img class="background-img" src="./moods/turtle-16532029043x2.jpg" alt="" onclick="firstMood(100, 'INTERMEDIATE SLOW')">
-                    </div>
-                    <div class="mood-item">
-                        <h1 onclick="firstMood(120, 'INTERMEDIATE FAST')">Inter- mediate Fast</h1>
-                        <img class="background-img" src="./moods/turtle-16532029043x2.jpg" alt="" onclick="firstMood(120, 'INTERMEDIATE FAST')">
-                    </div>
-                    <div class="mood-item">
-                        <h1 onclick="firstMood(140, 'FAST')">Fast</h1>
-                        <img class="background-img" src="./moods/HareMainPic.jpg" alt="" onclick="firstMood(140, 'FAST')">
-                    </div>
-                    <div class="mood-item">
-                        <h1 onclick="firstMood(160, 'REALLY FAST')">Really Fast</h1>
-                        <img class="background-img" src="./moods/front-view-of-a-female-cheetah--acinonyx-jubatus--running-73553651-5c62c0a2c9e77c0001566d2a.jpg" alt="" onclick="firstMood(160, 'REALLY FAST')">
-                    </div>
-                    <div class="mood-item">
-                        <h1 onclick="firstMood(180, 'ULTRA FAST')">Ultra Fast</h1>
-                        <img class="background-img" src="./moods/__opt__aboutcom__coeus__resources__content_migration__mnn__images__2016__10__cloud-ground-lightning-f71bba67383949648b1e519588c26342.jpg" alt="" onclick="firstMood(180, 'ULTRA FAST')">
-                    </div>
-                </div>
-            </div>
-            
-            <div class="playlistFormContainer" id="playlistFormContainer">
-                <form class="playlistForm" id="playlistForm">
-                    <p>Playlists will not show up until you've added a song!</p>
-                    <label for="plname"><b>Playlist Name</b></label>
-                    <input type="text" id="plname" name="plname" placeholder="Playlist Name"><br>
-                    <label for="pldesc"><b>Playlist Description</b></label>
-                    <textarea name="pldesc" id="pldesc" cols="30" rows="10" placeholder="Playlist Description"></textarea><br>
-                    <!-- <input type="text" id="pldesc" name="pldesc" placeholder="Playlist Description"><br> -->
-                    <button class="pl-form-create" id="createPlaylist" type="button" onclick="addPlaylist()">Create Playlist</button>
-                    <button class="pl-form-close" type="button" onclick="closeCreateForm()">Close</button>
-                </form>
-            </div>`;
-
             document.getElementById('songsArrayHtml').innerHTML = songString;
             
             // Check if user is logged in
@@ -282,6 +210,75 @@ async function addSong(userId, playlistId, songId){
         // alert("Score Added");
 }
 
+async function getMood(id, title) { 
+    // const id = document.getElementById('mood-slow').value;
+    console.log(id);
+    const response = await fetch(`https://api.getsongbpm.com/tempo/?api_key=25e2888c19fbbe8050eaad782fd41e64&bpm=${id}&limit=25`);
+    const api = await response.json();
+    console.log(api);
+    
+    var array = api.tempo;
+    console.log(array);
+    let htmlString = "";
+    array.forEach(element => {
+            htmlString += 
+                 `      
+                <div class="musicContainer">
+                    <div class="bg-img" style="background-image: url(${element.album.img});"></div>
+                    <div class="musicPlayer">
+                        <div class="img-container">
+                            <img class="musicImg" src="${element.album.img}" alt="">
+                        </div>
+                        <div class="infoContainer">
+                            <h2>${element.song_title}</h2>
+                            <h3>${element.artist.name}</h3>
+                        </div>
+                        <div class="infoContainer2">
+                            <h4>BPM</h4>
+                            <p>${element.tempo}</p>
+                        </div>
+                        <button class="addButton" onclick="openForm()">
+                            <i class="fa-solid fa-plus fa-4x"></i>
+                        </button>
+
+                        <div class="addSong-popup" id="addSong-popup">
+                            <div class="addSong-container">
+                                <div class="addSong-top">
+                                    <p class="">Create Playlist <i class="fa-solid fa-plus"></i></p>
+                                    <button type="button" class="closeBtn" onclick="closeForm()">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
+                                </div>
+                                <div class="addSong-bottom">
+                                    <p>Playlist 1</p>
+                                    <p>Playlist 1</p>
+                                    <p>Playlist 1</p>
+                                    <p>Playlist 1</p>
+                                    <p>Playlist 1</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                        
+            ` ;
+            document.getElementById('songsArrayHtml').innerHTML = htmlString; 
+        });
+
+        document.getElementById('single-mood-container').style.display = "block";
+        document.getElementById('single-mood-container-home').style.display = "flex";
+        document.getElementById('single-mood-container-text').style.display = "flex";
+
+        document.getElementById('searchContainer').style.display = "none";
+        document.getElementById('moodDataContainer').style.display = "none";
+        document.getElementById('searchResultContainer').style.paddingTop = "0";
+        
+        document.getElementById('single-mood-title').innerHTML = `${title}`; 
+        document.getElementById('single-mood-p').innerHTML = `${id} BPM`;
+
+        window.scrollTo(0, 0);
+}
+
 // Changes class to show animation when song is added
 function addSongAni(){
     document.getElementById("songAddedMsg").className = 'addSongAnimation';
@@ -295,20 +292,22 @@ function removeSongAni(){
     document.getElementById("songAddedMsg").className = 'songAddedMsg';
 }
 
-// Open and Closes the Add Song to Playlist Pop Up
+// Opens the Add Song to Playlist Pop Up
 function openPlaylistForm(id) {
     document.getElementById(id).style.display = "block";
 }
 
+// Closes the Add Song to Playlist Pop Up
 function closePlaylistForm(id) {
     document.getElementById(id).style.display = "none";
 }
 
-// Open and Closes the Create Playlist form
+// Opens the Create Playlist form
 function openCreateForm() {
     document.getElementById("playlistFormContainer").style.display = "block";
 }
 
+// Closes the Create Playlist form
 function closeCreateForm() {
     document.getElementById("playlistFormContainer").style.display = "none";
 }
