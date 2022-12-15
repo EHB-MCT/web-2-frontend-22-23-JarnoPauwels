@@ -1,6 +1,7 @@
 // Get all Playlists
 window.onload = getPlaylists();
 
+// Gets all playlist froms specific user
 async function getPlaylists(){
         let user = JSON.parse(sessionStorage.getItem('user'));
         fetch(`http://localhost:1337/playlists?userId=${user.user_id}`, {
@@ -64,8 +65,7 @@ async function getPlaylists(){
         });
 }
 
-// Get One Playlist
-//USER ID stored localy? in login.js, import js file and get user id
+// Get One specific Playlist
 async function getPlaylist(userId, playlistId){
     // let playlistId = id;
     // console.log(playlistId);
@@ -160,8 +160,9 @@ async function getPlaylist(userId, playlistId){
 //         console.log(data);
 //         // getPlaylists();
 //     });
-// }); 
+// });
 
+// Adds Song to Playlist
 async function addPlaylist(){
     console.log("clicked")
     let user = JSON.parse(sessionStorage.getItem('user'));
@@ -192,7 +193,7 @@ async function addPlaylist(){
     document.getElementById('createPlaylist').addEventListener('submit', (e) => {e.preventDefault();}); 
 }
 
-// WORKS
+// Deletes Entire Playlist from Database
 async function deletePlaylist(userId, playlistId){
     // console.log (id);
     fetch(`http://localhost:1337/playlist?userId=${userId}&playlistId=${playlistId}`, {
@@ -211,7 +212,7 @@ async function deletePlaylist(userId, playlistId){
     document.getElementById('deletePlaylist').addEventListener('submit', (e) => {e.preventDefault();}); 
 }
 
-// WORKS
+// Deletes Specific Song from A Playlist
 async function deleteSong(userId, playlistId, songId){
     console.log(userId, playlistId, songId);
     fetch(`http://localhost:1337/playlist/song?userId=${userId}&playlistId=${playlistId}&songId=${songId}`, {
@@ -231,14 +232,17 @@ async function deleteSong(userId, playlistId, songId){
 
 }
 
+// Opens the Create Playlist Form
 function openForm() {
     document.getElementById("playlistFormContainer").style.display = "block";
 }
 
+// Closes the Create Playlist Form
 function closeForm() {
     document.getElementById("playlistFormContainer").style.display = "none";
 }
 
+// Changes the Login Tooltip to show who is logged in
 function loginTooltip(){
     let loggedUser = JSON.parse(sessionStorage.getItem('user'))
 
