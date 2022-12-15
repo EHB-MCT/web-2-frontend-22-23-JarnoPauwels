@@ -33,8 +33,9 @@
                 <p class="single-mood-p" id="single-mood-p"></p>
             </div>
         </div>
+
         <div class="dataContainer" id="dataContainer">
-            <div class="searchContainer">
+            <div class="searchContainer" id="searchContainer">
                 <div class="wrap" id="inputContainer">
                 <div class="search" id="songInput">
                     <input id="songInputField" type="search" class="searchBar" placeholder="Search by Tempo/BPM">
@@ -52,7 +53,10 @@
             </div> 
     
             <div class="searchResultContainer" id="searchResultContainer">
-    
+                <div id="songAddedMsg" class="songAddedMsg">
+                    <h3>Added song to playlist!</h3>
+                </div>
+                <div id="songsArrayHtml"></div>
                 <!-- <div class="musicContainer">
                     <div class="bg-img" id="bg-img" style="background-image: url();"></div>
                     <div class="musicPlayer">
@@ -99,30 +103,36 @@
                 <h1 class="mood-title">Moods</h1>
                 <div class="mood-inside">
                     <div class="mood-item">
-                        <h1 onclick="firstMood()">Slow</h1>
-                        <img class="background-img" src="./moods/turtle-16532029043x2.jpg" alt="" onclick="firstMood()">
+                        <h1 onclick="getMood(40, 'ULTRA SLOW')">Ultra Slow</h1>
+                        <img class="background-img" src="./moods/124353-huqumrjvmo-1563950293.jpg" alt="" onclick="getMood(40, 'ULTRA SLOW')">
                     </div>
                     <div class="mood-item">
-                        <img class="background-img" src="https://via.placeholder.com/300" alt="">
+                        <h1 onclick="getMood(60, 'REALLY SLOW')">Really Slow</h1>
+                        <img class="background-img" src="./moods/_WW1129401.jpg" alt="" onclick="getMood(60, 'REALLY SLOW')">
                     </div>
                     <div class="mood-item">
-                        <img class="background-img" src="https://via.placeholder.com/300" alt="">
+                        <h1 onclick="getMood(80, 'SLOW')">Slow</h1>
+                        <img class="background-img" src="./moods/turtle-16532029043x2.jpg" alt="" onclick="getMood(80, 'SLOW')">
                     </div>
                     <div class="mood-item">
-                        <img class="background-img" src="https://via.placeholder.com/300" alt="">
+                        <h1 onclick="getMood(100, 'INTERMEDIATE SLOW')">Inter- mediate Slow</h1>
+                        <img class="background-img" src="./moods/turtle-16532029043x2.jpg" alt="" onclick="getMood(100, 'INTERMEDIATE SLOW')">
                     </div>
                     <div class="mood-item">
-                        <img class="background-img" src="https://via.placeholder.com/300" alt="">
+                        <h1 onclick="getMood(120, 'INTERMEDIATE FAST')">Inter- mediate Fast</h1>
+                        <img class="background-img" src="./moods/turtle-16532029043x2.jpg" alt="" onclick="getMood(120, 'INTERMEDIATE FAST')">
                     </div>
                     <div class="mood-item">
-                        <img class="background-img" src="https://via.placeholder.com/300" alt="">
+                        <h1 onclick="getMood(140, 'FAST')">Fast</h1>
+                        <img class="background-img" src="./moods/HareMainPic.jpg" alt="" onclick="getMood(140, 'FAST')">
                     </div>
                     <div class="mood-item">
-                        <img class="background-img" src="https://via.placeholder.com/300" alt="">
+                        <h1 onclick="getMood(160, 'REALLY FAST')">Really Fast</h1>
+                        <img class="background-img" src="./moods/front-view-of-a-female-cheetah--acinonyx-jubatus--running-73553651-5c62c0a2c9e77c0001566d2a.jpg" alt="" onclick="getMood(160, 'REALLY FAST')">
                     </div>
                     <div class="mood-item">
-                        <h1>Fast</h1>
-                        <img class="background-img" src="./moods/__opt__aboutcom__coeus__resources__content_migration__mnn__images__2016__10__cloud-ground-lightning-f71bba67383949648b1e519588c26342.jpg" alt="">
+                        <h1 onclick="getMood(180, 'ULTRA FAST')">Ultra Fast</h1>
+                        <img class="background-img" src="./moods/__opt__aboutcom__coeus__resources__content_migration__mnn__images__2016__10__cloud-ground-lightning-f71bba67383949648b1e519588c26342.jpg" alt="" onclick="getMood(180, 'ULTRA FAST')">
                     </div>
                 </div>
             </div>
@@ -143,6 +153,7 @@
     
             </div>
         </div>
+        
     </div>
 
     <footer>
