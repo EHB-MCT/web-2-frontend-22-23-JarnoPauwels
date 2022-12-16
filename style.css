@@ -1,7 +1,6 @@
 body {
     margin: 0;
     padding: 0;
-    /* background-color: #29465B; */
     background-color: #ffffff;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
@@ -23,7 +22,6 @@ a {
 
 .navBar {
     margin-top: 5px;
-    /* padding: 0; */
 }
 
 .navBar a {
@@ -35,35 +33,22 @@ a {
     transition: 250ms ease-in-out;
 }
 
-/* .navBar a:hover{
-    font-size: 1.7em;
-    
-} */
-
 .header {
     padding: 1em 0 1em 0;
     background-color: rgb(51, 117, 112);
-    /* background-color: rgb(17, 29, 36); */
     border-bottom: 2px solid rgb(255, 255, 255);
     z-index: 10;
 }
 
 .logo {
     display: flex;
-    /* width: 10%; */
 }
 
 #navLogo {
-    /* display: flex; */
     width: 50%;
     height: 50%;
     margin: 0 auto;
 }
-
-/* Nav Button Styling */
-
-/* Index Page Playlist Button Bottom Border*/
-
 
 /* Playlists Page Home Button Bottom Border*/
 #index-playlist-btn::after,
@@ -91,7 +76,6 @@ a {
 }
 
 /* Index & Playlists Page Home & Playlist Button Tooltip */
-
 #index-home-btn,
 #login-login-btn,
 #playlists-playlist-btn{
@@ -154,10 +138,7 @@ a {
 /* Search */
 
 .searchContainer {
-    /* background-color: #121F28; */
-    /* background-color: turquoise; */
     background-color: rgb(51, 117, 112);
-    ;
 }
 
 .wrap {
@@ -180,7 +161,6 @@ a {
     border-radius: 20px;
     outline: none;
     color: #000000;
-    /* box-shadow: 4px 4px rgb(197, 197, 197); */
     box-shadow: 5px 5px 5px #494949;
 }
 
@@ -192,7 +172,6 @@ a {
     border: none;
     background: #ffffff00;
     text-align: center;
-    /* color: #fff; */
     border-radius: 0 5px 5px 0;
     cursor: pointer;
     font-size: 20px;
@@ -233,11 +212,6 @@ a {
     /* transform: translateX(-50%); */
     /* border-radius: 0px 0px 20px 20px; */
 }
-
-/* .songAddedMsg h3{
-    margin: 0;
-    padding-top: 0.5em;
-} */
 
 .addSongAnimation {
     position: absolute;
@@ -321,8 +295,6 @@ a {
 
 .infoContainer,
 .infoContainer2 {
-    /* position: absolute; */
-    /* left: 8.5%; */
     height: 0%;
     margin: 0;
     padding-right: 1em;
@@ -344,7 +316,6 @@ a {
 .infoContainer2 p{
     margin: 0;
     text-shadow: 2px 2px #000000;
-    /* color: rgb(255, 255, 255); */
 }
 
 .playButton {
@@ -352,10 +323,6 @@ a {
     border: none;
 }
 
-/* .audioBar {
-    height: 10%;
-    width: 80%; 
-} */
 .delButton,
 .addButton{
     position: absolute;
@@ -387,7 +354,6 @@ a {
 }
 
 .addSong-container {
-    /* max-width: 100px; */
     padding: 10px;
     background-color: white;
     border: 1px solid rgb(240, 240, 240);
@@ -452,7 +418,6 @@ a {
 }
 
 .mood-inside {
-    /* padding-top: 1em; */
     margin: 0 10% 0 10%;
     display: flex;
     flex-direction: row;
@@ -492,10 +457,6 @@ a {
     box-shadow: 5px 5px 5px #494949;
 }
 
-/* .background-img:hover {
-    box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
-} */
-
 .mood-title {
     margin: 0 10% 0 10%;
     padding: 0em 2em 0.3em 0em;
@@ -528,21 +489,18 @@ a {
 
 .playlistTitle,
 .single-mood-title {
-    /* margin-top: 0; */
     padding-right: 0.5em;   
 }
 
 .single-mood-p {
     margin: auto;
     margin-left: 0;
-    /* margin-top: 0; */
     color: gray;
 }
 
 /* Playlist */
 
 .playlist-inside {
-    /* padding-top: 1em; */
     margin: 0 10% 0 10%;
     display: flex;
     flex-direction: row;
@@ -665,10 +623,8 @@ a {
 /* Login */
 .registerContainer,
 .loginContainer{
-    /* padding-top: 0em; */
     width: 50%;
     translate: 50%;
-    /* align-items: center; */
 }
 
 .login-inside{
