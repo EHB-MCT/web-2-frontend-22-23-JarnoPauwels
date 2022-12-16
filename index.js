@@ -207,7 +207,6 @@ async function addSong(userId, playlistId, songId){
             addSong();
             console.log("added");
         });
-        // alert("Score Added");
 }
 
 async function getMood(id, title) { 
@@ -219,13 +218,13 @@ async function getMood(id, title) {
     
     var array = api.tempo;
     console.log(array);
+    let user = JSON.parse(sessionStorage.getItem('user'));
     let htmlString = "";
     array.forEach(element => {
             htmlString += 
-                 `      
-                <div class="musicContainer">
-                    <div class="bg-img" style="background-image: url(${element.album.img});"></div>
-                    <div class="musicPlayer">
+                `<div class="musicContainer">
+                    <div class="bg-img" id="bg-img" style="background-image: url(${element.album.img});"></div>
+                    <div class="musicPlayer" id="${element.artist.id}">
                         <div class="img-container">
                             <img class="musicImg" src="${element.album.img}" alt="">
                         </div>
@@ -237,32 +236,56 @@ async function getMood(id, title) {
                             <h4>BPM</h4>
                             <p>${element.tempo}</p>
                         </div>
-                        <button class="addButton" onclick="openForm()">
+                        <button class="addButton" onclick="openPlaylistForm('${element.song_id}+1')">
                             <i class="fa-solid fa-plus fa-4x"></i>
-                        </button>
+                        </button>   
+                    </div>
 
-                        <div class="addSong-popup" id="addSong-popup">
-                            <div class="addSong-container">
-                                <div class="addSong-top">
-                                    <p class="">Create Playlist <i class="fa-solid fa-plus"></i></p>
-                                    <button type="button" class="closeBtn" onclick="closeForm()">
-                                        <i class="fa-solid fa-xmark"></i>
-                                    </button>
-                                </div>
-                                <div class="addSong-bottom">
-                                    <p>Playlist 1</p>
-                                    <p>Playlist 1</p>
-                                    <p>Playlist 1</p>
-                                    <p>Playlist 1</p>
-                                    <p>Playlist 1</p>
-                                </div>
+                    <div class="addSong-popup" id="${element.song_id}+1" style="display: none;">
+                        <div class="addSong-container" id="addSong-container" style="filter: none;">
+                            <div class="addSong-top">
+                                <button type="button" class="createPl" style="cursor: pointer" onclick="openCreateForm()">Create Playlist <i class="fa-solid fa-plus"></i></button>
+                                   <button type="button" class="closeBtn" onclick="closePlaylistForm('${element.song_id}+1')">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </button>
+                            </div>
+                            <div class="addSong-bottom" id="${element.song_id}">
+                                <h3 id="loggedIn">You are not logged in!</h3>
                             </div>
                         </div>
                     </div>
-                </div>
-                        
-            ` ;
-            document.getElementById('songsArrayHtml').innerHTML = htmlString; 
+                </div>`;
+
+            document.getElementById('songsArrayHtml').innerHTML = htmlString;
+
+                        // Check if user is logged in
+            if(user){
+                // Fetches all the playlists and displays per song
+                fetch(`http://localhost:1337/playlists?userId=${user.user_id}`, {
+                method: "GET",
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Content-Type': 'application/json',
+                },
+
+                }).then(response => {
+                        return response.json()
+                }).then(async data => {
+
+                    // console.log('Success:', data);
+                    var playlistsArray = data;
+                    
+                    let playlistString = "";
+                    playlistsArray.forEach(playlistElement => {
+                        playlistString += `
+                            <button id="addSong" onclick="addSong('${user.user_id}', '${playlistElement.playlist_id}','${element.song_id}'), closePlaylistForm('${element.song_id}+1')">${playlistElement.playlist_name}</button>
+                        `;
+                    });
+
+                    // Insert Playlist array into song popup
+                    document.getElementById(`${element.song_id}`).innerHTML = playlistString; 
+                });
+            }
         });
 
         document.getElementById('single-mood-container').style.display = "block";
