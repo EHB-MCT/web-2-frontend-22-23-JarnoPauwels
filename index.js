@@ -18,7 +18,6 @@ async function randomSongs(){
     
     const response = await fetch(`https://api.getsongbpm.com/tempo/?api_key=25e2888c19fbbe8050eaad782fd41e64&bpm=${randomInteger(40, 220)}&limit=6`);
     const song = await response.json();
-    console.log(song);
 
     var songArray = song.tempo;
     let user = JSON.parse(sessionStorage.getItem('user'));
@@ -66,7 +65,7 @@ async function randomSongs(){
             // Check if user is logged in
             if(user){
                 // Fetches all the playlists and displays per song
-                fetch(`http://localhost:1337/playlists?userId=${user.user_id}`, {
+                fetch(`https://web-2-course-project-nbij.onrender.com/playlists?userId=${user.user_id}`, {
                 method: "GET",
                 headers: {
                     'Access-Control-Allow-Origin': '*',
@@ -77,7 +76,6 @@ async function randomSongs(){
                         return response.json()
                 }).then(async data => {
 
-                    // console.log('Success:', data);
                     var playlistsArray = data;
                     
                     let playlistString = "";
@@ -108,7 +106,6 @@ async function getSongs(){
 
     var array = song.tempo;
     let user = JSON.parse(sessionStorage.getItem('user'));
-    console.log(array); 
 
     let htmlString = "";
     array.forEach(element => {
@@ -151,7 +148,7 @@ async function getSongs(){
 
             if(user){
                 // Fetches all the playlists and displays per song
-                fetch(`http://localhost:1337/playlists?userId=${user.user_id}`, {
+                fetch(`https://web-2-course-project-nbij.onrender.com/playlists?userId=${user.user_id}`, {
                 method: "GET",
                 headers: {
                     'Access-Control-Allow-Origin': '*',
@@ -161,8 +158,6 @@ async function getSongs(){
                 }).then(response => {
                         return response.json()
                 }).then(async data => {
-
-                    console.log('Success:', data);
                     var playlistsArray = data;
                     
                     let playlistString = "";
@@ -182,9 +177,7 @@ async function getSongs(){
 
 // Adds song to Database
 async function addSong(userId, playlistId, songId){
-    console.log(userId, playlistId, songId);
-    
-        fetch(`http://localhost:1337/playlist/song?userId=${userId}&playlistId=${playlistId}&songId=${songId}`, {
+        fetch(`https://web-2-course-project-nbij.onrender.com/playlist/song?userId=${userId}&playlistId=${playlistId}&songId=${songId}`, {
         mode: 'cors',
         method: "POST",
         headers: {
@@ -194,7 +187,6 @@ async function addSong(userId, playlistId, songId){
         }).then(response => {
             return response
         }).then(async data => {
-            console.log(data);
             addSongAni()
             setTimeout(removeSongAni, 1500);
             return data;
@@ -205,19 +197,15 @@ async function addSong(userId, playlistId, songId){
         document.getElementById("addSong").addEventListener('submit', (e) => {
             e.preventDefault();
             addSong();
-            console.log("added");
         });
 }
 
 async function getMood(id, title) { 
-    // const id = document.getElementById('mood-slow').value;
-    console.log(id);
     const response = await fetch(`https://api.getsongbpm.com/tempo/?api_key=25e2888c19fbbe8050eaad782fd41e64&bpm=${id}&limit=25`);
     const api = await response.json();
-    console.log(api);
     
     var array = api.tempo;
-    console.log(array);
+
     let user = JSON.parse(sessionStorage.getItem('user'));
     let htmlString = "";
     array.forEach(element => {
@@ -261,7 +249,7 @@ async function getMood(id, title) {
                         // Check if user is logged in
             if(user){
                 // Fetches all the playlists and displays per song
-                fetch(`http://localhost:1337/playlists?userId=${user.user_id}`, {
+                fetch(`https://web-2-course-project-nbij.onrender.com/playlists?userId=${user.user_id}`, {
                 method: "GET",
                 headers: {
                     'Access-Control-Allow-Origin': '*',
@@ -272,7 +260,6 @@ async function getMood(id, title) {
                         return response.json()
                 }).then(async data => {
 
-                    // console.log('Success:', data);
                     var playlistsArray = data;
                     
                     let playlistString = "";
@@ -341,7 +328,7 @@ async function addPlaylist(){
     let playlistName = document.getElementById("plname").value;
     let playlistDesc = document.getElementById("pldesc").value;
 
-    fetch(`http://localhost:1337/playlist`, {
+    fetch(`https://web-2-course-project-nbij.onrender.com/playlist`, {
     mode: 'cors',
     method: "PUT",
     headers: {
@@ -356,7 +343,6 @@ async function addPlaylist(){
     }).then(response => {
         return response
     }).then(async data => {
-        console.log(data);
         // getPlaylists();
         closeCreateForm();
     });

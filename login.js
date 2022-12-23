@@ -1,5 +1,3 @@
-import { getData } from './fetch.js';
-
 // Switch to Register Form
 document.getElementById('registerBtn').addEventListener('click', event =>{
     event.preventDefault();
@@ -16,7 +14,6 @@ document.getElementById('loginBtn').addEventListener('click', event =>{
 
 document.getElementById('logoutBtn').addEventListener('click', event =>{
     event.preventDefault();
-    console.log("clicked")
     sessionStorage.removeItem('user');
 })
 
@@ -29,8 +26,7 @@ document.getElementById('lForm').addEventListener("submit", event =>{
     user.password = document.getElementById("inputPassword").value;
 
     // Check for login
-    getData("http://localhost:1337/login", "POST", user).then(result => {
-        console.log(result);
+    getData("https://web-2-course-project-nbij.onrender.com/login", "POST", user).then(result => {
         sessionStorage.setItem('user', JSON.stringify(result.data));
         clearInput()
         loginMessage()
@@ -47,12 +43,10 @@ document.getElementById('rForm').addEventListener("submit", event =>{
     user.password = document.getElementById("inputRegPassword").value;
     user.password2 = document.getElementById("inputRegPassword2").value;
 
-    console.log(user.username, user.email, user.password, user.password2)
-    console.log(user)
     // Check the passwords
     if(user.password == user.password2){
         // Register the user
-        getData("http://localhost:1337/register", "POST", user).then(data => {
+        getData("https://web-2-course-project-nbij.onrender.com/register", "POST", user).then(data => {
             alert(data.message);
             switchLogin()
             registerMessage()
@@ -61,6 +55,17 @@ document.getElementById('rForm').addEventListener("submit", event =>{
         alert("Passwords do not match")
     }
 })
+
+async function getData(url, method, data){
+    let response = await fetch(url, {
+        method: method,
+        headers: {
+            'Content-Type': "application/json"
+        },
+        body: JSON.stringify(data)
+    });
+    return await response.json();
+}
 
 // Switch to Login Form Function
 function switchLogin(){

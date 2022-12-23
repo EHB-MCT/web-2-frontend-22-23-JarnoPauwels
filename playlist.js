@@ -4,7 +4,7 @@ window.onload = getPlaylists();
 // Gets all playlist froms specific user
 async function getPlaylists(){
         let user = JSON.parse(sessionStorage.getItem('user'));
-        fetch(`http://localhost:1337/playlists?userId=${user.user_id}`, {
+        fetch(`https://web-2-course-project-nbij.onrender.com/playlists?userId=${user.user_id}`, {
             method: "GET",
             headers: {
                 'Access-Control-Allow-Origin': '*',
@@ -14,8 +14,6 @@ async function getPlaylists(){
         }).then(response => {
             return response.json()
         }).then(async data => {
-
-            console.log('Success:', data);
             var array = data;
 
             let htmlString = ` `;
@@ -23,14 +21,11 @@ async function getPlaylists(){
 
                 let songs = element.songs[0]
 
-                console.log(songs);
-
                 async function displayPlaylists (){
                     // fetch songs to display playlist background img
                     const response = await fetch(`https://api.getsongbpm.com/song/?api_key=25e2888c19fbbe8050eaad782fd41e64&id=${songs.song_id}`);
                     const song = await response.json();
-        
-                    console.log(song);
+
                     htmlString += 
                         `   
                         <div class="playlist-item">
@@ -67,10 +62,7 @@ async function getPlaylists(){
 
 // Get One specific Playlist
 async function getPlaylist(userId, playlistId){
-    // let playlistId = id;
-    // console.log(playlistId);
-    // let playlistRefresh = setTimeout(getPlaylist(playlistId),1000);
-        fetch(`http://localhost:1337/playlist?userId=${userId}&playlistId=${playlistId}`, {
+        fetch(`https://web-2-course-project-nbij.onrender.com/playlist?userId=${userId}&playlistId=${playlistId}`, {
             method: "GET",
             headers: {
                 'Access-Control-Allow-Origin': '*',
@@ -80,23 +72,16 @@ async function getPlaylist(userId, playlistId){
         }).then(response => {
             return response.json()
         }).then(async data => {
-            
-            // COMPLETE PLAYLIST
-
-            console.log('Success:', data);
             var playlist = data;
 
- 
             let htmlString = ` `;
             let songs = playlist.songs
 
             songs.forEach(element =>{
                 async function displaySongs (){                        
-                        // fetch bpm api by song id
                     const response = await fetch(`https://api.getsongbpm.com/song/?api_key=25e2888c19fbbe8050eaad782fd41e64&id=${element.song_id}`);
                     const song = await response.json();
-                    
-                    console.log(song);
+
                     htmlString += 
                         `   
                         <div class="musicContainer">
@@ -134,43 +119,13 @@ async function getPlaylist(userId, playlistId){
         document.getElementById('playlistDataContainer').style.display = "none";
 }
 
-// document.getElementById('addPlaylist').addEventListener('submit', (e) => {
-//     e.preventDefault();
-//     console.log("clicked")
-//     let user = JSON.parse(sessionStorage.getItem('user'));
-//     let playlistName = document.getElementById("plname").value;
-//     let playlistDesc = document.getElementById("pldesc").value;
-//     console.log(user.user_id, playlistName, playlistDesc)
-
-//     fetch(`http://localhost:1337/playlist`, {
-//     mode: 'cors',
-//     method: "PUT",
-//     headers: {
-//         'Content-Type': 'application/json',
-//         'Access-Control-Allow-Origin': '*',
-//     },
-//     body: JSON.stringify({
-//         playlist_name: playlistName,
-//         playlist_desc: playlistDesc,
-//         user_id: user.user_id 
-//     })
-//     }).then(response => {
-//         return response
-//     }).then(async data => {
-//         console.log(data);
-//         // getPlaylists();
-//     });
-// });
-
 // Adds Song to Playlist
 async function addPlaylist(){
-    console.log("clicked")
     let user = JSON.parse(sessionStorage.getItem('user'));
     let playlistName = document.getElementById("plname").value;
     let playlistDesc = document.getElementById("pldesc").value;
-    console.log(user.user_id, playlistName, playlistDesc)
 
-    fetch(`http://localhost:1337/playlist`, {
+    fetch(`https://web-2-course-project-nbij.onrender.com/playlist`, {
     mode: 'cors',
     method: "PUT",
     headers: {
@@ -185,7 +140,6 @@ async function addPlaylist(){
     }).then(response => {
         return response
     }).then(async data => {
-        console.log(data);
         // getPlaylists();
         closeForm();
     });
@@ -195,8 +149,7 @@ async function addPlaylist(){
 
 // Deletes Entire Playlist from Database
 async function deletePlaylist(userId, playlistId){
-    // console.log (id);
-    fetch(`http://localhost:1337/playlist?userId=${userId}&playlistId=${playlistId}`, {
+    fetch(`https://web-2-course-project-nbij.onrender.com/playlist?userId=${userId}&playlistId=${playlistId}`, {
         mode: 'cors',
         method: "DELETE",
         headers: {
@@ -206,7 +159,6 @@ async function deletePlaylist(userId, playlistId){
     }).then(response => {
         return response
     }).then(async data => {
-        console.log(data);
         getPlaylists();
     });
     document.getElementById('deletePlaylist').addEventListener('submit', (e) => {e.preventDefault();}); 
@@ -214,8 +166,7 @@ async function deletePlaylist(userId, playlistId){
 
 // Deletes Specific Song from A Playlist
 async function deleteSong(userId, playlistId, songId){
-    console.log(userId, playlistId, songId);
-    fetch(`http://localhost:1337/playlist/song?userId=${userId}&playlistId=${playlistId}&songId=${songId}`, {
+    fetch(`https://web-2-course-project-nbij.onrender.com/playlist/song?userId=${userId}&playlistId=${playlistId}&songId=${songId}`, {
         mode: 'cors',
         method: "DELETE",
         headers: {
@@ -225,7 +176,6 @@ async function deleteSong(userId, playlistId, songId){
     }).then(response => {
         return response
     }).then(async data => {
-        console.log(data);
         getPlaylist(userId, playlistId);
     });
     document.getElementById('delButton').addEventListener('submit', (e) => {e.preventDefault();});
