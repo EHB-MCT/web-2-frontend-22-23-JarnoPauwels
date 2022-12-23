@@ -24,62 +24,20 @@
         <div class="playlistDataContainer" id="playlistDataContainer" style="display: block;">
             <p class="create-playlist" onclick="openForm()">Create Playlist <i class="fa-solid fa-plus"></i></p>
             <h1 class="playlist-title">My Playlists</h1>
-            <div class="playlist-inside" id="playlist-inside">
-                <!-- <div class="playlist-item">
-                    <div class="playlist-item-inside">                       
-                        <h1>Title</h1>
-                        <p>Playlist Description</p>
-                    </div>
-                    <img src="https://via.placeholder.com/300" alt="">
-                </div>
-                <div class="playlist-item">
-                    <div class="playlist-item-inside">                       
-                        <h1>Title</h1>
-                        <p>Playlist Description</p>
-                    </div>
-                    <img src="https://via.placeholder.com/300" alt="">
-                </div>
-                <div class="playlist-item">
-                    <div class="playlist-item-inside">                       
-                        <h1>Title</h1>
-                        <p>Playlist Description</p>
-                    </div>
-                    <img src="https://via.placeholder.com/300" alt="">
-                </div>
-                <div class="playlist-item">
-                    <div class="playlist-item-inside">                       
-                        <h1>Title</h1>
-                        <p>Playlist Description</p>
-                    </div>
-                    <img src="https://via.placeholder.com/300" alt="">
-                </div>
-                <div class="playlist-item">
-                    <div class="playlist-item-inside">                       
-                        <h1>Title</h1>
-                        <p>Playlist Description</p>
-                    </div>
-                    <img src="https://via.placeholder.com/300" alt="">
-                </div>
-                <div class="playlist-item">
-                    <div class="playlist-item-inside">                       
-                        <h1>Title</h1>
-                        <p>Playlist Description</p>
-                    </div>
-                    <img src="https://via.placeholder.com/300" alt="">
-                </div> -->
 
+            <div class="playlist-inside" id="playlist-inside">
             </div>
 
          
             <div class="playlistFormContainer" id="playlistFormContainer">
-                <form class="playlistForm" id="playlistForm">
+                <form class="playlistForm" id="playlistForm"> 
                     <label for="plname"><b>Playlist Name</b></label>
                     <input type="text" id="plname" name="plname" placeholder="Playlist Name"><br>
                     <label for="pldesc"><b>Playlist Description</b></label>
                     <textarea name="pldesc" id="pldesc" cols="30" rows="10" placeholder="Playlist Description"></textarea><br>
-                    <!-- <input type="text" id="pldesc" name="pldesc" placeholder="Playlist Description"><br> -->
                     <button class="pl-form-create" id="createPlaylist" type="button" onclick="addPlaylist()">Create Playlist</button>
                     <button class="pl-form-close" type="button" onclick="closeForm()">Close</button>
+                    <p class="playlistDisclaimer">You need to add a Song to the playlist before it shows up!</p>
                 </form>
             </div>
         
@@ -108,7 +66,7 @@
     </div>
 
     <footer>
-        
+        <div class="footer"><p>API: <a class="api-link" href="https://getsongbpm.com/">https://getsongbpm.com/</a></p></div>
     </footer>
 
 </body>
