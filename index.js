@@ -8,7 +8,7 @@ async function randomSongs(){
     document.getElementById('single-mood-container-text').style.display = "none";
     document.getElementById('searchContainer').style.display = "block";
     document.getElementById('moodDataContainer').style.display = "block";
-    document.getElementById('searchResultContainer').style.paddingTop = "3em";
+    document.getElementById('searchResultContainer').style.paddingTop = "2em";
         
 
     // Get random BPM number for fetch
