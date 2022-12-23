@@ -10,6 +10,7 @@ async function randomSongs(){
     document.getElementById('single-mood-container-text').style.display = "none";
     document.getElementById('searchContainer').style.display = "block";
     document.getElementById('moodDataContainer').style.display = "block";
+    document.getElementById('result-title').style.display = "block";
     document.getElementById('searchResultContainer').style.paddingTop = "2em";
         
 
@@ -283,6 +284,7 @@ window.getMood = async function (id, title) {
 
         document.getElementById('searchContainer').style.display = "none";
         document.getElementById('moodDataContainer').style.display = "none";
+        document.getElementById('result-title').style.display = "none";
         document.getElementById('searchResultContainer').style.paddingTop = "0";
         
         document.getElementById('single-mood-title').innerHTML = `${title}`; 
@@ -360,6 +362,12 @@ function loginTooltip(){
         document.getElementById('loginTooltip').innerText = `Logged in as: ${loggedUser.username}`;
     };
 }
+
+// Returns from Mood to Home Page
+document.getElementById('single-mood-container-home').addEventListener('click', event =>{
+    event.preventDefault();
+    randomSongs()
+})
 
 loginTooltip();
 
