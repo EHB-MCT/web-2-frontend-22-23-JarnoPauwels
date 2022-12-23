@@ -249,7 +249,7 @@ window.getMood = async function (id, title) {
 
             document.getElementById('songsArrayHtml').innerHTML = htmlString;
 
-                        // Check if user is logged in
+            // Check if user is logged in
             if(user){
                 // Fetches all the playlists and displays per song
                 fetch(`https://web-2-course-project-nbij.onrender.com/playlists?userId=${user.user_id}`, {
@@ -268,8 +268,7 @@ window.getMood = async function (id, title) {
                     let playlistString = "";
                     playlistsArray.forEach(playlistElement => {
                         playlistString += `
-                            <button id="addSong" onclick="addSong('${user.user_id}', '${playlistElement.playlist_id}','${element.song_id}'), closePlaylistForm('${element.song_id}+1')">${playlistElement.playlist_name}</button>
-                        `;
+                            <button id="addSong" onclick="addSong('${user.user_id}', '${playlistElement.playlist_id}','${element.song_id}'), closePlaylistForm('${element.song_id}+1')">${playlistElement.playlist_name}</button>`;
                     });
 
                     // Insert Playlist array into song popup
@@ -296,13 +295,9 @@ window.getMood = async function (id, title) {
 // Changes class to show animation when song is added
 function addSongAni(){
     document.getElementById("songAddedMsg").className = 'addSongAnimation';
-    // setTimeout(removeSongAni(), 5000);
-
-    // setTimeout(removeSongAni(), 5000);
 }
 
 function removeSongAni(){
-    // setTimeout(document.getElementById("songAddedMsg").className = 'songAddedMsg', 3000)
     document.getElementById("songAddedMsg").className = 'songAddedMsg';
 }
 
