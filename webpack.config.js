@@ -23,7 +23,7 @@ module.exports = {
           options: {
             name: '[name].[ext]',
             publicPath: 'src/images',
-            outputPath: 'dist/images',
+            outputPath: 'docs/images',
       
           }
         },
