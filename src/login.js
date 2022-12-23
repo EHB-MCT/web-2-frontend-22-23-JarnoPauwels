@@ -1,3 +1,5 @@
+import './style.css';
+
 // Switch to Register Form
 document.getElementById('registerBtn').addEventListener('click', event =>{
     event.preventDefault();

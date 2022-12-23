@@ -1,3 +1,5 @@
+import './style.css';
+
 // Get all Playlists
 window.onload = getPlaylists();
 
@@ -61,7 +63,7 @@ async function getPlaylists(){
 }
 
 // Get One specific Playlist
-async function getPlaylist(userId, playlistId){
+window.getPlaylist = async function (userId, playlistId){
         fetch(`https://web-2-course-project-nbij.onrender.com/playlist?userId=${userId}&playlistId=${playlistId}`, {
             method: "GET",
             headers: {
@@ -120,7 +122,8 @@ async function getPlaylist(userId, playlistId){
 }
 
 // Adds Song to Playlist
-async function addPlaylist(){
+document.getElementById('createPlaylist').addEventListener('click', event =>{
+    event.preventDefault();
     let user = JSON.parse(sessionStorage.getItem('user'));
     let playlistName = document.getElementById("plname").value;
     let playlistDesc = document.getElementById("pldesc").value;
@@ -145,10 +148,16 @@ async function addPlaylist(){
     });
 
     document.getElementById('createPlaylist').addEventListener('submit', (e) => {e.preventDefault();}); 
-}
+})
+
+// Returns to Playlists
+document.getElementById('playlist-info-container').addEventListener('click', event =>{
+    event.preventDefault();
+    getPlaylists()
+})
 
 // Deletes Entire Playlist from Database
-async function deletePlaylist(userId, playlistId){
+window.deletePlaylist = async function (userId, playlistId){
     fetch(`https://web-2-course-project-nbij.onrender.com/playlist?userId=${userId}&playlistId=${playlistId}`, {
         mode: 'cors',
         method: "DELETE",
@@ -165,7 +174,7 @@ async function deletePlaylist(userId, playlistId){
 }
 
 // Deletes Specific Song from A Playlist
-async function deleteSong(userId, playlistId, songId){
+window.deleteSong = async function (userId, playlistId, songId){
     fetch(`https://web-2-course-project-nbij.onrender.com/playlist/song?userId=${userId}&playlistId=${playlistId}&songId=${songId}`, {
         mode: 'cors',
         method: "DELETE",
@@ -182,12 +191,17 @@ async function deleteSong(userId, playlistId, songId){
 
 }
 
-// Opens the Create Playlist Form
-function openForm() {
+document.getElementById('openForm').addEventListener('click', event =>{
+    event.preventDefault();
     document.getElementById("playlistFormContainer").style.display = "block";
-}
+})
 
 // Closes the Create Playlist Form
+document.getElementById('closeForm').addEventListener('click', event =>{
+    event.preventDefault();
+    document.getElementById("playlistFormContainer").style.display = "none";
+})
+
 function closeForm() {
     document.getElementById("playlistFormContainer").style.display = "none";
 }

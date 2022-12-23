@@ -1,3 +1,5 @@
+import './style.css';
+
 window.onload = randomSongs()
 // Get and Displasy Random Songs on Load
 async function randomSongs(){
@@ -40,7 +42,7 @@ async function randomSongs(){
                             <h4>BPM</h4>
                             <p>${element.tempo}</p>
                         </div>
-                        <button class="addButton" onclick="openPlaylistForm('${element.song_id}+1')">
+                        <button class="addButton" id"addButton" onclick="openPlaylistForm('${element.song_id}+1')">
                             <i class="fa-solid fa-plus fa-4x"></i>
                         </button>   
                     </div>
@@ -94,7 +96,7 @@ async function randomSongs(){
 }
 
 // Gets and Displays song on search
-async function getSongs(){
+window.getSongs = async function (){
     document.getElementById('songInput').addEventListener('submit', (e) => {
     e.preventDefault();
     });
@@ -176,7 +178,7 @@ async function getSongs(){
 }
 
 // Adds song to Database
-async function addSong(userId, playlistId, songId){
+window.addSong = async function (userId, playlistId, songId){
         fetch(`https://web-2-course-project-nbij.onrender.com/playlist/song?userId=${userId}&playlistId=${playlistId}&songId=${songId}`, {
         mode: 'cors',
         method: "POST",
@@ -200,7 +202,7 @@ async function addSong(userId, playlistId, songId){
         });
 }
 
-async function getMood(id, title) { 
+window.getMood = async function (id, title) { 
     const response = await fetch(`https://api.getsongbpm.com/tempo/?api_key=25e2888c19fbbe8050eaad782fd41e64&bpm=${id}&limit=25`);
     const api = await response.json();
     
@@ -303,27 +305,27 @@ function removeSongAni(){
 }
 
 // Opens the Add Song to Playlist Pop Up
-function openPlaylistForm(id) {
+window.openPlaylistForm = function (id) {
     document.getElementById(id).style.display = "block";
 }
 
 // Closes the Add Song to Playlist Pop Up
-function closePlaylistForm(id) {
+window.closePlaylistForm = function (id) {
     document.getElementById(id).style.display = "none";
 }
 
 // Opens the Create Playlist form
-function openCreateForm() {
+window.openCreateForm = function () {
     document.getElementById("playlistFormContainer").style.display = "block";
 }
 
 // Closes the Create Playlist form
-function closeCreateForm() {
+window.closeCreateForm = function () {
     document.getElementById("playlistFormContainer").style.display = "none";
 }
 
 // Adds Playlist to database
-async function addPlaylist(){
+window.addPlaylist = async function (){
     let user = JSON.parse(sessionStorage.getItem('user'));
     let playlistName = document.getElementById("plname").value;
     let playlistDesc = document.getElementById("pldesc").value;

@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="./logo3.png">
     <script src="https://kit.fontawesome.com/23b2e0ff10.js" crossorigin="anonymous"></script>
-    <script src="playlist.js" defer></script>
+    <script src="/dist/playlist.js" defer></script>
     <title>TempoSearch</title>
 </head>
 <body>
 	<header class="header">
-    <a class="logo" href="./index.html"><img id="navLogo" src="./logo.png" alt=""></a>
+    <a class="logo" href="./index.html"><img id="navLogo" src="./images/logo.png" alt=""></a>
     <ul class="navBar">
           <li><a href="./index.html" class="playlists-home-btn"><i class="fa-solid fa-house" id="playlists-home-btn"></i><span class="toolTipText">Home</span></a></li>
           <li><a href="#" class="playlists-playlist-btn"><i class="fa-solid fa-music" id="playlists-playlist-btn"></i><span class="toolTipText">Playlists</span></a></li>
@@ -22,7 +22,7 @@
 	</header> 
 
         <div class="playlistDataContainer" id="playlistDataContainer" style="display: block;">
-            <p class="create-playlist" onclick="openForm()">Create Playlist <i class="fa-solid fa-plus"></i></p>
+            <p class="create-playlist" id="openForm">Create Playlist <i class="fa-solid fa-plus"></i></p>
             <h1 class="playlist-title">My Playlists</h1>
 
             <div class="playlist-inside" id="playlist-inside">
@@ -35,8 +35,8 @@
                     <input type="text" id="plname" name="plname" placeholder="Playlist Name"><br>
                     <label for="pldesc"><b>Playlist Description</b></label>
                     <textarea name="pldesc" id="pldesc" cols="30" rows="10" placeholder="Playlist Description"></textarea><br>
-                    <button class="pl-form-create" id="createPlaylist" type="button" onclick="addPlaylist()">Create Playlist</button>
-                    <button class="pl-form-close" type="button" onclick="closeForm()">Close</button>
+                    <button class="pl-form-create" id="createPlaylist" type="button">Create Playlist</button>
+                    <button class="pl-form-close"  id="closeForm" type="button">Close</button>
                     <p class="playlistDisclaimer">You need to add a Song to the playlist before it shows up!</p>
                 </form>
             </div>
@@ -48,8 +48,8 @@
 
             <div class="playlist-info-container" id="playlist-info-container" style="display: none;">
                 <div class="playlist-info-container-home" id="playlist-info-container-home">
-                    <i class="fa-solid fa-chevron-left" id="single-mood-i" onclick="getPlaylists()"></i>
-                    <p class="single-mood-p" onclick="getPlaylists()">Back to Playlists</p>
+                    <i class="fa-solid fa-chevron-left" id="single-mood-i"></i>
+                    <p class="single-mood-p">Back to Playlists</p>
                 </div>
                 <div class="playlist-info-container-text" id="playlist-info-container-text">
                     <h1 class="playlistTitle" id="playlistTitle"></h1>
