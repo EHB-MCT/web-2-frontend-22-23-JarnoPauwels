@@ -9,6 +9,11 @@ body::-webkit-scrollbar {
     display: none;
 }
 
+html{
+    position: relative;
+    min-height: 100%;
+}
+
 /* Nav */
 ul {
     margin: 0;
@@ -181,7 +186,7 @@ a {
 .limit{
     position: absolute;
     height: 80%;
-    left: 92%;
+    left: 80%;
     top: 10%;
     border: none;
     text-align: center;
@@ -214,7 +219,7 @@ a {
 }
 
 .addSongAnimation {
-    position: absolute;
+    position: fixed;
     text-align: center;
     background-color: green;
     color: white;
@@ -227,6 +232,7 @@ a {
     border-radius: 0px 0px 20px 20px;
     animation-name:  position;
     animation-duration: 1.5s;
+    z-index: 10;
 }
 
 .addSongAnimation h3 {
@@ -422,6 +428,8 @@ a {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    margin-bottom: 5em;
+    padding-bottom: 5em;
 }
 
 .mood-item {
@@ -434,7 +442,7 @@ a {
 
 .mood-item h1 {
     position: absolute;
-    font-size: 70px;
+    font-size: 65px;
     font-weight: bold;
     text-transform: uppercase;
     text-align: center;
@@ -568,11 +576,24 @@ a {
     cursor: pointer;
 }
 
+/* Playlist Result */
+
+.playlistContainer{
+    padding-bottom: 4em;
+    margin-bottom: 4em;
+}
+
 /* Playlist Form */
+
+.playlistDisclaimer{
+    font-size: 13px;
+    color: rgb(153, 153, 153);
+    text-align: center;
+}
 
 .playlistFormContainer {
     display: none;
-    position: absolute;
+    position: fixed;
     top: 50%;
     transform: translateY(-50%);
     width: 50%;
@@ -689,14 +710,17 @@ a {
     width: 50%;
 }
 
-.userBtns #registerBtn {
+.userBtns .loginBtn {
     margin-left: 1em;
 }
 
 /* Footer */
 
 .footer {
+    position: absolute;
+    bottom: 0;
     padding: 1em;
+    width: 100%;
     background-color: rgb(51, 117, 112);
 }
 
@@ -773,6 +797,10 @@ input[type="search"]::-webkit-search-results-decoration {
     .searchButton {
         left: 95%;
     }
+
+    .limit{
+        left: 85%;
+    }
     
 }
 
@@ -805,6 +833,10 @@ input[type="search"]::-webkit-search-results-decoration {
 
     .searchButton {
         left: 95%;
+    }
+
+    .limit {
+        left: 92%;
     }
 
 }
