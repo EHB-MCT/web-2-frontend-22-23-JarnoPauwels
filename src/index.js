@@ -364,7 +364,7 @@ function loginTooltip(){
 loginTooltip();
 
 // Clears the Search Bar
-function clearInput(){
+window.clearInput = function (){
     var getValue= document.getElementById("songInputField");
       if (getValue.value !="") {
           getValue.value = "";
