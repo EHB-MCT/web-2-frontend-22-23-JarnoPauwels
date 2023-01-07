@@ -246,6 +246,10 @@ a {
     padding-bottom: 2em;
 }
 
+.musicContainer:last-child{
+    padding-bottom: 7em;
+}
+
 .musicPlayer {
     position: relative;
     display: flex;
@@ -468,7 +472,7 @@ a {
 .mood-pre-title {
     color: #888888;
     margin: 0 10% 0 10%;
-    padding: 2em 2em 0em 0em;
+    padding: 0em 2em 0em 0em;
 }
 
 /* Single Mood */
